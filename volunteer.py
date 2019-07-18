@@ -63,8 +63,9 @@ def process_ac(ac_json):
 	program = ac_json.get('Program')
 	program_info = {}
 	program_info['ServiceHour'] = program.get('ProgramServiceHours')
+	program_info['Time'] = program.get('StartTime')[11:] + ' to ' + program.get('EndTime')[11:]
+	program_info['Date'] = program.get('StartDate')[0:10] + ' to ' + program.get('EndDate')[0:10]
 	program_info['ID'] = program.get('ProgramID')
-	program_info['Date'] = program.get('StartDate') + ' to ' + program.get('EndDate')
 	program_info['Name'] = program.get('ProgramName')
 	if program.get('PositionsAvailable')>program.get('PositionsOccupied') and (program.get('RegGroupLimit')==0):
 		if program.get('RegAgeMin'):
